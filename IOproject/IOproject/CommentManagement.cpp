@@ -1,12 +1,12 @@
 #include "CommentManagement.h"
 
-Comment CommentManagement::addComment(string _description, int _idTask, int _idUser)
+void CommentManagement::addComment(string _description, int _idTask, int _idUser)
 {
-	Comment *comment = new Comment(_description, _idUser, _idTask);
+	Comment* comment = new Comment(_description, _idUser, _idTask);
 	this->commentCount++;
 	this->commentsList->push_back(*comment);
 	cout << "Dodano komentarz do zadania o id: " << _idTask << "\n";
-	return commentsList->back();
+	
 }
 
 int CommentManagement::getLastCommentId() {
@@ -28,7 +28,12 @@ void CommentManagement::showComment(int idTask)
 	for (i = commentsList->begin(); i != commentsList->end(); i++)
 		if (idTask == i->getIdTask())
 			cout << "Komentarz uzytkownika od id: " << i->getIdUser() << " napisal: " << i->getDescription() << endl;
-}
+		/*	
+	for (int i = 0; i < commentsList->size(); i++)
+	{
+		if (idTask == *commentsList[i].getIdTask());
+	}*/
+			}
 
 void CommentManagement::getCommentMock() {
 	vector<Comment> *commentsMock = new vector<Comment>;
