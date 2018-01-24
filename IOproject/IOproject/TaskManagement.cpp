@@ -15,10 +15,9 @@ int TaskManagement::getLastTaskId() {
 	if (this->getTaskCount() > 0) {
 		Task *tmp = &this->taskList->back();
 		return tmp->getId();
-		
 	}
-	
 }
+
 void TaskManagement::deleteTask(int id) {
 
 	bool found = false;

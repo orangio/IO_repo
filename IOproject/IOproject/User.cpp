@@ -16,7 +16,7 @@ User::User(string username, string password, string name, string surname, string
 	this->email = email;
 	this->manager = manager;
 	this->isLogged = true;
-	this->id = pom++;
+	this->id = ++pom;
 }
 
 string User::getUsername() {

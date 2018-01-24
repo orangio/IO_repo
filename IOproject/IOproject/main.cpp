@@ -16,7 +16,7 @@ int main() {
 
 	for (;;)
 	{
-		cout << "\t PANEL GLOWNY\n";
+		cout << "PANEL GLOWNY\n\n";
 		cout << "Wybierz opcje:" << endl;
 		int choice;
 		cout << "1- Panel managera " << endl;

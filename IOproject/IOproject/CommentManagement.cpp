@@ -1,12 +1,12 @@
 #include "CommentManagement.h"
 
-void CommentManagement::addComment(string _description, int _idTask, int _idUser)
+Comment CommentManagement::addComment(string _description, int _idTask, int _idUser)
 {
 	Comment* comment = new Comment(_description, _idUser, _idTask);
 	this->commentCount++;
 	this->commentsList->push_back(*comment);
 	cout << "Dodano komentarz do zadania o id: " << _idTask << "\n";
-	
+	return commentsList->back();
 }
 
 int CommentManagement::getLastCommentId() {
