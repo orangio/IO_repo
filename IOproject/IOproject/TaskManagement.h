@@ -1,11 +1,10 @@
 #pragma once
-#pragma once
 #include "Task.h"
-#include "User.h"
 #include<vector>
 #include<iostream>
 #include<string>
 #include <time.h>
+#include<iomanip>
 namespace Tasks {
 
 	using namespace std;
@@ -14,22 +13,23 @@ namespace Tasks {
 	{
 	private:
 		vector<Task> *taskList;
-		User user;
+
 		int taskCount;
 
-		void getTasks();
+		void getTasksMock();
 		void setTaskList(vector<Task>* list);
 
 	public:
-		Task addTask(int user_id, string name, string description, double created, double updated);
+		Task addTask(int user_id, int assignee_id, short priority, string name, string description, double created, double updated);
 		void deleteTask(int id);
-		void updateTask(int id, int user_id, string name, string desc);
+		void updateTask(int id, int user_id, int assignee_id, short priority, string name, string desc);
 		void listTasks();
 		int getTaskCount();
+		vector<Task> *getTasks();
+		int getLastTaskId();
 
 		TaskManagement();
 		~TaskManagement();
-		TaskManagement(User user);
 	};
 
 }

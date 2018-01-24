@@ -1,18 +1,19 @@
 #pragma once
-//#include "Comment.h"
-//#include "Task.h"
-//#include "TaskManagement.h"
+#include <iostream>
+#include "Comment.h"
+#include "CommentManagement.h"
+#include "Task.h"
+#include "User.h"
+#include "TaskManagement.h"
+using namespace Tasks;
 class Panel {
 	int user_id;
+	bool cond;
 	//Powiadomienia pow= new Powiadomienia();
 
 public:
 
-	Panel(int);
-	bool checkAssess(bool manager);
-	//void dodajZadanie(Task t, int user_id);
-	//void usunZadanie(int id_zadania, int user_id);
-	//void zmienZadanie(int id_task, int user_id);
-	//void dodaj_komentarz(Comment k);
-
+	Panel();
+	int initiate(User us);
+	void zamknij();
 };

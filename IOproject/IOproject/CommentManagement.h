@@ -6,9 +6,19 @@
 
 class CommentManagement {
 private:
-	vector<Comment> commentsList;
-public:
+	vector<Comment> *commentsList;
+	int commentCount;
+	void getCommentMock();
+	void setCommentList(vector<Comment>*list);
 
-	void addComment(string description, int idTask, int idUser);
+public:
+	Comment addComment(string description, int idTask, int idUser);
+	int getLastCommentId();
+	void showComment(int idTask);
+	int getCommentCount();
+
+	CommentManagement();
+	//~CommentManagement();
+
 
 };

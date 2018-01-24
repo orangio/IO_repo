@@ -1,109 +1,125 @@
-#pragma once
 #include "TaskManagement.h"
 using namespace Tasks;
 
-Task TaskManagement::addTask(int user_id, string name, string description, double created, double updated) {
-	//if (this->user.isLoggedIn())
-	//{
-	Task *task = new Task(++this->taskCount, user_id, name, description, created, updated);
-	this->taskList->push_back(*task);
-	cout << "Dodano zadanie. Id: " << task->id << "\n";
-	//}
-	//else
-	//cout << "nie dodano";
+Task TaskManagement::addTask(int user_id, int assignee_id, short priority, string name, string description, double created, double updated) {
 
+	Task *task = new Task(this->getLastTaskId() + 1, user_id, assignee_id, priority, name, description, created, updated);
+	this->taskCount++;
+	this->taskList->push_back(*task);
+	cout << "Dodano zadanie. Id: " << task->getId() << "\n";
+	// tutaj mogloby byc powiadomienie
 	return taskList->back();
 }
 
+int TaskManagement::getLastTaskId() {
+	if (this->getTaskCount() > 0) {
+		Task *tmp = &this->taskList->back();
+		return tmp->getId();
+		
+	}
+	
+}
 void TaskManagement::deleteTask(int id) {
-	//if (this->user.isLoggedIn()) {
+
 	bool found = false;
 	vector<Task>::iterator it;
 	for (it = taskList->begin(); it != taskList->end(); it++)
 	{
-		if (it->id == id)
+		if (it->getId() == id)
 		{
 			found = true;
 			taskList->erase(it);
 			break;
 		}
 	}
-	if (found)
+	if (found) {
 		cout << "Usunieto zadanie od id: " << id << endl;
+		// tutaj mogloby byc powiadomienie
+	}
 	else
 		cout << "Nie znaleziono zadania o id: " << id << endl;
-	//}
-	//else
-	//cout << "niezalogowany";
+
 }
 
-void TaskManagement::updateTask(int id, int user_id, string name, string desc) {
-	//if (this->user.isLoggedIn()) {
+void TaskManagement::updateTask(int id, int user_id, int assignee_id, short priority, string name, string desc) {
+
 	bool found = false;
 	vector<Task>::iterator it;
 	for (it = taskList->begin(); it != taskList->end(); it++) {
 
-		if (it->id == id) {
+		if (it->getId() == id) {
 			found = true;
+			if (assignee_id != 0)
+				it->setAssigneeId(assignee_id);
 			if (user_id != 0)
-				it->user_id = user_id;
-			if (name != "")
-				it->name = name;
-			if (desc != "")
-				it->description = desc;
+				it->setUserId(user_id);
 
-			it->updated = time(0);
+			it->setName(name);
+			it->setDescription(desc);
+			it->setPriority(priority);
+			it->setUpdated(time(0));
 			break;
 		}
 
 	}
-	if (found)
+	if (found) {
 		cout << "Zmodyfikowano zadanie od id: " << id << endl;
+		// tutaj mogloby byc powiadomienie
+	}
 	else
 		cout << "Nie znaleziono zadania o id: " << id << endl;
-	//}
-	//else
-	//cout << "niezalogowany";
+
 }
 
 void TaskManagement::listTasks() {
-	//if (this->user.isLoggedIn())
-	//{
+
 	vector<Task>::iterator it;
 	cout << "\nLista taskow:\n";
+	cout << setfill('-');
+	cout << setw(4) << std::right << "ID\t"
+		<< setw(4) << std::right << "aID\t"
+		<< setw(4) << std::right << "uID\t"
+		<< setw(10) << std::right << "Priority\t"
+		<< setw(20) << std::right << "Name\t"
+		<< setw(20) << std::right << "Description\t"
+		<< setw(20) << std::right << "Created\t"
+		<< setw(20) << std::right << "Updated\n";
 	for (it = taskList->begin(); it != taskList->end(); it++)
 	{
-		time_t t = it->created;
-		tm *d = localtime(&t);
-
-		cout << it->id << '\t';
-		cout << it->user_id << '\t';
-		cout << it->description << '\t';
-		cout << it->name << '\t';
-		cout << d->tm_hour << ":" << d->tm_min << ":" << d->tm_sec << " " << d->tm_mday << "-" << d->tm_mon + 1 << "-" << d->tm_year << '\t';
-		if (it->updated != 0) {
-			t = it->updated;
-			d = localtime(&t);
-			cout << d->tm_hour << ":" << d->tm_min << ":" << d->tm_sec << " " << d->tm_mday << "-" << d->tm_mon + 1 << "-" << d->tm_year << '\n';
+		cout << setw(4) << std::right;
+		cout << it->getId() << "|\t";
+		cout << setw(4) << std::right;
+		cout << it->getAssigneeId() << "|\t";
+		cout << setw(4) << std::right;
+		cout << it->getUserId() << "|\t";
+		cout << setw(10) << std::right;
+		cout << it->getPriority() << "|\t";
+		cout << setw(20) << std::right;
+		cout << it->getName() << "|\t";
+		cout << setw(20) << std::right;
+		cout << it->getDescription() << "|\t";
+		cout << setw(20) << std::right;
+		cout << it->getFormattedDate(it->getCreated()) << "|\t";
+		cout << setw(20) << std::right;
+		if (it->getUpdated() != 0) {
+			cout << it->getFormattedDate(it->getUpdated());
 		}
 		else {
 			cout << "None\n";
 		}
 	}
-	//}
-	//else
-	//cout << "niezalogowany";
 }
+
 
 void TaskManagement::setTaskList(vector<Task>* list) {
 	this->taskList = list;
 }
 
-void TaskManagement::getTasks() {
+void TaskManagement::getTasksMock() {
 	vector<Task> *tasksMock = new vector<Task>;
 	int mockCount = 10;
 	for (int i = 1; i <= mockCount; i++) {
-		Task *task = new Task(i, i, "name", "desc", time(0), 0);
+		Task *task = new Task(i, i, i, (short)i, "name", "desc", time(0), 0);
 		tasksMock->push_back(*task);
 	}
 	this->taskCount = tasksMock->size();
@@ -114,15 +130,19 @@ int TaskManagement::getTaskCount() {
 	return this->taskList->size();
 }
 
-TaskManagement::TaskManagement()
-{
+vector<Task> *TaskManagement::getTasks() {
+	return this->taskList;
 }
 
-TaskManagement::TaskManagement(User user)
+
+TaskManagement::TaskManagement()
 {
-	this->user = user;
-	this->getTasks();
+	this->getTasksMock();
+
 }
+
+
+
 
 TaskManagement::~TaskManagement()
 {
