@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include "Comment.h"
+#include "CommentManagement.h"
 #include "Task.h"
 #include "User.h"
 #include "TaskManagement.h"

@@ -26,12 +26,10 @@ namespace Tasks {
 		void listTasks();
 		int getTaskCount();
 		vector<Task> *getTasks();
+		int getLastTaskId();
 
 		TaskManagement();
 		~TaskManagement();
 	};
 
 }
-
-//metoda gettaskbyid(id)
-//for ... (id.vextor = id.argumentu) return.id

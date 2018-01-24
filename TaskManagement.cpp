@@ -3,11 +3,19 @@ using namespace Tasks;
 
 Task TaskManagement::addTask(int user_id, int assignee_id, short priority, string name, string description, double created, double updated) {
 
-	Task *task = new Task(++this->taskCount, user_id, assignee_id, priority, name, description, created, updated);
+	Task *task = new Task(this->getLastTaskId() + 1, user_id, assignee_id, priority, name, description, created, updated);
+	this->taskCount++;
 	this->taskList->push_back(*task);
 	cout << "Dodano zadanie. Id: " << task->getId() << "\n";
 	// tutaj mogloby byc powiadomienie
 	return taskList->back();
+}
+
+int TaskManagement::getLastTaskId() {
+	if (this->getTaskCount() > 0) {
+		Task *tmp = &this->taskList->back();
+		return tmp->getId();
+	}
 }
 
 void TaskManagement::deleteTask(int id) {
