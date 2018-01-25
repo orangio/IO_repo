@@ -1,0 +1,7 @@
+﻿  unittest1.cpp
+d:\studia\informatyka stosowana\rok 3\semestr v\io\ioproject\ioproject\commentmanagement.cpp(22): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+d:\studia\informatyka stosowana\rok 3\semestr v\io\ioproject\ioproject\commentmanagement.cpp(45): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+d:\studia\informatyka stosowana\rok 3\semestr v\io\ioproject\ioproject\commentmanagement.cpp(19): warning C4715: 'CommentManagement::getLastCommentId': not all control paths return a value
+     Creating library D:\Studia\Informatyka Stosowana\Rok 3\Semestr V\IO\IOproject\x64\Debug\UnitTest1.lib and object D:\Studia\Informatyka Stosowana\Rok 3\Semestr V\IO\IOproject\x64\Debug\UnitTest1.exp
+  UnitTest1.vcxproj -> D:\Studia\Informatyka Stosowana\Rok 3\Semestr V\IO\IOproject\x64\Debug\UnitTest1.dll
+  UnitTest1.vcxproj -> D:\Studia\Informatyka Stosowana\Rok 3\Semestr V\IO\IOproject\x64\Debug\UnitTest1.pdb (Partial PDB)

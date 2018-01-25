@@ -1,0 +1,20 @@
+﻿  User.cpp
+  TaskManagement.cpp
+e:\studia\iii rok\v semestr\inżynieria oprogramowania\io_repo-magda\ioproject\ioproject\taskmanagement.cpp(59): warning C4244: 'argument': conversion from 'time_t' to 'double', possible loss of data
+e:\studia\iii rok\v semestr\inżynieria oprogramowania\io_repo-magda\ioproject\ioproject\taskmanagement.cpp(121): warning C4244: 'argument': conversion from 'time_t' to 'double', possible loss of data
+e:\studia\iii rok\v semestr\inżynieria oprogramowania\io_repo-magda\ioproject\ioproject\taskmanagement.cpp(124): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+e:\studia\iii rok\v semestr\inżynieria oprogramowania\io_repo-magda\ioproject\ioproject\taskmanagement.cpp(129): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+  Task.cpp
+e:\studia\iii rok\v semestr\inżynieria oprogramowania\io_repo-magda\ioproject\ioproject\task.cpp(48): warning C4244: 'initializing': conversion from 'double' to 'time_t', possible loss of data
+  Panel.cpp
+e:\studia\iii rok\v semestr\inżynieria oprogramowania\io_repo-magda\ioproject\ioproject\panel.cpp(51): warning C4244: 'argument': conversion from 'time_t' to 'double', possible loss of data
+  main.cpp
+  CommentManagement.cpp
+e:\studia\iii rok\v semestr\inżynieria oprogramowania\io_repo-magda\ioproject\ioproject\commentmanagement.cpp(22): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+e:\studia\iii rok\v semestr\inżynieria oprogramowania\io_repo-magda\ioproject\ioproject\commentmanagement.cpp(45): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+  Comment.cpp
+  Generating Code...
+e:\studia\iii rok\v semestr\inżynieria oprogramowania\io_repo-magda\ioproject\ioproject\commentmanagement.cpp(19): warning C4715: 'CommentManagement::getLastCommentId': not all control paths return a value
+e:\studia\iii rok\v semestr\inżynieria oprogramowania\io_repo-magda\ioproject\ioproject\taskmanagement.cpp(19): warning C4715: 'Tasks::TaskManagement::getLastTaskId': not all control paths return a value
+  IOproject.vcxproj -> E:\Studia\III ROK\V Semestr\Inżynieria Oprogramowania\IO_repo-Magda\IOproject\x64\Debug\IOproject.exe
+  IOproject.vcxproj -> E:\Studia\III ROK\V Semestr\Inżynieria Oprogramowania\IO_repo-Magda\IOproject\x64\Debug\IOproject.pdb (Partial PDB)
